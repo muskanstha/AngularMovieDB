@@ -14,7 +14,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/mergeMap';
 
-interface IMovieData { results: Movie[]; }
+interface GetMoviesData { results: Movie[]; }
 
 
 
@@ -26,7 +26,7 @@ export class GetMovieService {
   public getMovies(): Observable<Movie[]> {
     return this.http.get('http://api.themoviedb.org/3/movie/popular?api_key=e7990444d96dae7ef10b8ce4477f8388&language=en-US&page=1')
       .map(response => {
-        const data: IMovieData = response.json();
+        const data: GetMoviesData = response.json();
         return data.results.map(movie => {
           return <Movie>{
             'id': movie.id,
@@ -42,7 +42,7 @@ export class GetMovieService {
   public getTopMovies(): Observable<Movie[]> {
     return this.http.get('https://api.themoviedb.org/3/movie/top_rated?api_key=e7990444d96dae7ef10b8ce4477f8388&language=en-US&page=1')
       .map(response => {
-        const data: IMovieData = response.json();
+        const data: GetMoviesData = response.json();
         return data.results.map(movie => {
           return <Movie>{
             'id': movie.id,
@@ -58,7 +58,7 @@ export class GetMovieService {
   public getUpcomingMovies(): Observable<Movie[]> {
     return this.http.get('https://api.themoviedb.org/3/movie/upcoming?api_key=e7990444d96dae7ef10b8ce4477f8388&language=en-US&page=1')
       .map(response => {
-        const data: IMovieData = response.json();
+        const data: GetMoviesData = response.json();
         return data.results.map(movie => {
           return <Movie>{
             'id': movie.id,
@@ -75,7 +75,7 @@ export class GetMovieService {
   public getPlayingMovies(): Observable<Movie[]> {
     return this.http.get('https://api.themoviedb.org/3/movie/now_playing?api_key=e7990444d96dae7ef10b8ce4477f8388&language=en-US&page=1')
       .map(response => {
-        const data: IMovieData = response.json();
+        const data: GetMoviesData = response.json();
         return data.results.map(movie => {
           return <Movie>{
             'id': movie.id,
