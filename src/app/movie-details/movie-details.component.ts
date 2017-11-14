@@ -6,6 +6,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { Location } from '@angular/common';
 
+import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 
 
 @Component({
@@ -17,13 +18,20 @@ export class MovieDetailsComponent implements OnInit {
 
   private movie: Movie;
   private movies: Movie[];
+  safeUrl: SafeResourceUrl;
 
-  constructor(private movieService: GetMovieService, private router: Router, private route: ActivatedRoute, private location: Location) { }
 
-  ngOnInit() {
-    this.movieService.getMovie(this.route.snapshot.params['title']).subscribe(movie => {
-      this.movie = movie;
-      // this.movie.fullposter_path = 'https://image.tmdb.org/t/p/w185_and_h278_bestv2' + this.movie.poster_path;
+  constructor(private movieService: GetMovieService, private router: Router, private route: ActivatedRoute, private location: Location, private sanitizer: DomSanitizer) { }
+
+  async ngOnInit() {
+    await this.movieService.getMovie(this.route.snapshot.params['title']).then(data => {
+      data.subscribe(movie => {
+        this.movie = movie;
+        console.log(this.movie.trailer);
+        this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.movie.trailer);
+
+      });
+
     });
 
     // this.movie.fullposter_path = 'https://image.tmdb.org/t/p/w185_and_h278_bestv2' + this.movie.poster_path;

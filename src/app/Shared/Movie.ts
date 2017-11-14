@@ -6,5 +6,6 @@ export interface Movie {
     vote_average: number;
     overview: string;
     poster_path: string;
+    trailer: string;
     // constructor() { this.fullposter_path = 'https://image.tmdb.org/t/p/w185_and_h278_bestv2' + this.poster_path; }
 }
