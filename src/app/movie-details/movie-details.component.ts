@@ -21,7 +21,8 @@ export class MovieDetailsComponent implements OnInit {
   safeUrl: SafeResourceUrl;
 
 
-  constructor(private movieService: GetMovieService, private router: Router, private route: ActivatedRoute, private location: Location, private sanitizer: DomSanitizer) { }
+  constructor(private movieService: GetMovieService, private router: Router, private route: ActivatedRoute,
+    private location: Location, private sanitizer: DomSanitizer) { }
 
   async ngOnInit() {
     await this.movieService.getMovie(this.route.snapshot.params['title']).then(data => {
