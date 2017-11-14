@@ -5,10 +5,12 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { MovieListComponent } from '../movie-list/movie-list.component';
 import { MovieDetailsComponent } from '../movie-details/movie-details.component';
+import { MovieReviewsComponent } from '../movie-reviews/movie-reviews.component';
 
 const appRoutes: Routes = [
   { path: 'movie-list/:id', component: MovieListComponent },
   { path: 'movie-details/:title', component: MovieDetailsComponent },
+  { path: 'movie-reviews/:title', component: MovieReviewsComponent },
   { path: '', redirectTo: '/movie-list', pathMatch: 'full' },
   { path: '**', component: MovieListComponent }
 ];

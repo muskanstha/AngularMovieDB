@@ -13,12 +13,14 @@ import { MovieListComponent } from './movie-list/movie-list.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 
 import { AppRouterModule } from './app-router/app-router.module';
+import { MovieReviewsComponent } from './movie-reviews/movie-reviews.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MovieListComponent,
     MovieDetailsComponent,
+    MovieReviewsComponent,
   ],
   imports: [
     BrowserModule,
