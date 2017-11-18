@@ -4,6 +4,7 @@ import { Injectable, OnInit } from '@angular/core';
 
 
 import { Movie } from './Shared/Movie';
+import { Review } from './Shared/Review';
 
 import { HttpClient } from '@angular/common/http';
 import { Http, Response } from '@angular/http';
@@ -15,6 +16,8 @@ import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/mergeMap';
 
 interface GetMoviesData { results: Movie[]; }
+interface GetReviewsData { results: Review[]; }
+
 interface GetTrailerData { key: string; }
 interface GetTrailerList { results: GetTrailerData[]; }
 
@@ -23,6 +26,7 @@ export class GetMovieService {
 
   private theLink: string;
   private trailerList: GetTrailerData[];
+
 
   private aMovie: Movie;
 
@@ -93,7 +97,19 @@ export class GetMovieService {
         });
       });
   }
-
+  public getReview(movieId: string): Observable<Review[]> {
+    return this.http.get('https://api.themoviedb.org/3/movie/' + movieId +
+      '/reviews?api_key=e7990444d96dae7ef10b8ce4477f8388&language=en-US&page=1')
+      .map(response => {
+        const data: GetReviewsData = response.json();
+        return data.results.map(review => {
+          return <Review>{
+            'author': review.author,
+            'content': review.content
+          };
+        });
+      });
+  }
   public async getMovie(id: string): Promise<Observable<Movie>> {
     await this.getTrailer(id);
     return this.http.get('https://api.themoviedb.org/3/movie/'
@@ -107,7 +123,7 @@ export class GetMovieService {
           'overview': movie.overview,
           'release_date': movie.release_date,
           'vote_average': movie.vote_average,
-          'trailer': this.getTrailer(id)
+          'trailer': this.getTrailer(id),
         };
       });
     // this.movieService.getPlayingMovies().subscribe(data => {
@@ -126,9 +142,9 @@ export class GetMovieService {
           };
         });
       }).subscribe(data => this.theLink = data[0].key);
-    console.log(this.theLink);
     return this.theLink;
   }
+
 
   // this.getTrailer(movie.id).subscribe(data => {
   //   this.trailerList = data;

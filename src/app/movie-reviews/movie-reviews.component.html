@@ -1,0 +1,17 @@
+<section class="menu">
+  <div class="review-list">
+    <div class="review-group">
+      <ul class="reviews">
+          <button (click)="gotoMovieDetails()">Back to Movie Details</button>
+        <li *ngFor="let review of reviews">
+          <div>
+            <h3>{{review.author}}</h3>
+             {{review.content}}
+            <br/>
+            <br/>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
