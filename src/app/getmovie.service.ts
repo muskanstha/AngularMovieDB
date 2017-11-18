@@ -96,7 +96,7 @@ export class GetMovieService {
 
   public async getMovie(id: string): Promise<Observable<Movie>> {
     await this.getTrailer(id);
-    return await this.http.get('https://api.themoviedb.org/3/movie/'
+    return this.http.get('https://api.themoviedb.org/3/movie/'
       + id + '?api_key=e7990444d96dae7ef10b8ce4477f8388&language=en-US')
       .map(response => {
         const movie: Movie = response.json();

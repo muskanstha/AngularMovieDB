@@ -14,6 +14,7 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
 
 import { AppRouterModule } from './app-router/app-router.module';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,4 +31,6 @@ import { AppRouterModule } from './app-router/app-router.module';
   providers: [GetMovieService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+}
