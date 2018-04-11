@@ -1,9 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\src",
+    "\\public",
     "\\src\\app"
   ],
-  "SelectedNode": "\\src\\app\\app.module.ts",
+  "SelectedNode": "\\tsconfig.json",
   "PreviewInSolutionExplorer": false
 }
