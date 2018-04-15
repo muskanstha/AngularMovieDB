@@ -17,7 +17,7 @@ import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 export class MovieDetailsComponent implements OnInit {
 
   private movie: Movie;
-  private movies: Movie[];
+  public  movies: Movie[];
   safeUrl: SafeResourceUrl;
 
 

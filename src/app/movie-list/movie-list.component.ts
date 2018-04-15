@@ -13,7 +13,7 @@ import { fail } from 'assert';
 export class MovieListComponent implements OnInit {
   private alink: string;
 
-  private movies: Movie[];
+  public  movies: Movie[];
   constructor(private movieService: GetMovieService,
     private http: HttpClient,
     private router: Router, private route: ActivatedRoute) {

@@ -13,7 +13,7 @@ import { Review } from '../Shared/Review';
 export class MovieReviewsComponent implements OnInit {
 
   // private movieID: string;
-  private reviews: Review[];
+  public reviews: Review[];
 
   constructor(private movieService: GetMovieService, private router: Router, private route: ActivatedRoute,
     private location: Location) { }
